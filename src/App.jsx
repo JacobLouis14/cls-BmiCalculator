@@ -110,7 +110,7 @@ function App() {
               value={height || ""}
               id="standard-basic"
               name="height"
-              label="Height"
+              label="Height in cm"
               variant="standard"
               helperText={isHeightValidate ? "" : "Input Correct Value"}
               FormHelperTextProps={{ sx: { color: "red" } }}
@@ -125,7 +125,7 @@ function App() {
               id="standard-basic"
               value={weight || ""}
               name="weight"
-              label="Weight"
+              label="Weight in kg"
               variant="standard"
               helperText={isWeightValidate ? "" : "Input Correct Value"}
               FormHelperTextProps={{ sx: { color: "red" } }}
@@ -144,7 +144,14 @@ function App() {
               >
                 Reset
               </Button>
-              <Button variant="contained" onClick={calculateHandler}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  height != 0 && weight != 0
+                    ? calculateHandler()
+                    : alert("Need Value ");
+                }}
+              >
                 Calculate
               </Button>
             </div>
